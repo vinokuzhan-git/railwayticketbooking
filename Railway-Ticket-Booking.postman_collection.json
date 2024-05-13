@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "08fc21f4-06b8-4ce2-862e-224718fdaf40",
+		"name": "Railway-Ticket-Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4047489"
+	},
+	"item": [
+		{
+			"name": "1 - Configure section and Number of seats ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sectionName\" : \"A\",\r\n    \"noOfSeat\" : 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/seat/allocation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seat",
+						"allocation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Verify the section and created seats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seat/allocation/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seat",
+						"allocation",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Book the ticket for Passanger",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"from\": \"Chennai\",\r\n    \"to\": \"Ariyalur\",\r\n    \"pd\": {\r\n        \"email\": \"vinoth101@gmail.com\",\r\n        \"fname\": \"vinoth101\",\r\n        \"lname\": \"Sundar\"\r\n    },\r\n    \"sa\": {\r\n        \"sectionName\": \"A\",\r\n        \"seatNo\": \"2\"\r\n    },\r\n    \"pricePaid\": 26.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ticket/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ticket",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 - View the ticket Details by passing passenger email ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ticket/user/vinoth101@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ticket",
+						"user",
+						"vinoth101@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5 - Pass the section and get the reserved seat details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seat/allocation/section/A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seat",
+						"allocation",
+						"section",
+						"A"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 - Cancel Booking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seat/allocation/cancel/booking?sectionName=A&seatNo=2&bookingId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seat",
+						"allocation",
+						"cancel",
+						"booking"
+					],
+					"query": [
+						{
+							"key": "sectionName",
+							"value": "A"
+						},
+						{
+							"key": "seatNo",
+							"value": "2"
+						},
+						{
+							"key": "bookingId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
